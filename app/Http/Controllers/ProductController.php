@@ -15,7 +15,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        $user = auth()->user();
+
+        if($user === null) {
+            return [
+                'message' => "Sorry, we can't find your account."
+            ];
+        }
+
+        return Product::with('user')->where('user_id', $user->id)->with('user')->get();
+
+        // return Product::all();
     }
 
     /**

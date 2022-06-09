@@ -15,13 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        User::create([
-            'name' => 'Truong',
-            'email' => 'giangnhattruong@gmail.com',
-            'password' => bcrypt('Nhattruong@1')
-        ]);
+        // $myAccount = User::where('email', 'iliki', 'giangnhattruong@gmail.com')->first();
+        
+        // if ($myAccount == null) {
+            User::create([
+                'name' => 'Truong',
+                'email' => 'giangnhattruong@gmail.com',
+                'password' => bcrypt('Nhattruong@1')
+            ]);
+        // }
+        
+        User::factory(50)->create();
 
-        Product::factory(10)->create();
+        Product::factory(300)->create();
     }
 }
